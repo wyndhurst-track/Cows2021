@@ -23,8 +23,8 @@ setup_gpu(gpu)  # set the modified tf session as backend in keras
 parser = argparse.ArgumentParser()
 parser.add_argument("--confidence_score_th", default=0.3, type=float)
 parser.add_argument("--nms_threshold", default=0.28, type=float)
-parser.add_argument('--frame_file', default='/home/io18230/Desktop/v/', type=str)
-parser.add_argument('--model_path', default=os.path.join('/trained_model', 'resnet50_trained_144.h5'), type=str)  # /home/io18230/Desktop/ resnet50_256_0406
+parser.add_argument('--frame_file', default='/mnt/c/Users/Test/Documents/University/Diss/wynd-main/videos', type=str)
+parser.add_argument('--model_path', default='/mnt/c/Users/Test/Documents/University/Diss/wynd-main/Cows2021/make_data/resnet50_trained_144.h5', type=str)  # /home/io18230/Desktop/ resnet50_256_0406
 parser.add_argument("--crop_detect", default=1, type=int, help='crop and save') # save cropped images
 
 parser.add_argument("--ignore_clip_th_dt", default=0.945, type=float, help='')  #set to 0.1 nothing happen Percentage higher than it suvive
