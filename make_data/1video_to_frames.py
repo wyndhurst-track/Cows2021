@@ -2,18 +2,16 @@
 # get frames from videos every 0.2s and output them to a file named frames
 
 # structure of videoFile
-#0Videos
-#--2020-03-08_12-52-4
-#--#--RGB.avi
-#--2020-03-08_12-52-9
-#--#--RGB.avi
+# Videos
+#--...YYYY-MM-DD
+#--#--...YYYY-MM-DDTHH-mm-SS+OOOOO.avi
 
 import cv2, os, glob
 import numpy as np
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--videoFile', default='/mnt/c/Users/Test/Documents/University/Diss/wynd-main/videos/', type=str, help = 'a folder contains many subfolders with RGB.avi')
+parser.add_argument('--videoFile', default='~/videos/', type=str, help = 'Downloaded videos folder')
 args = parser.parse_args()
 
 time_gap = 0.2
@@ -50,9 +48,9 @@ if video_to_frame:
             c=0
             rval=vc.isOpened()
             kk = vc.get(cv2.CAP_PROP_FPS)
-            gap = kk * time_gap   #视频帧计数间隔频率
-            
-            while rval:   #循环读取视频帧
+            gap = kk * time_gap
+
+            while rval:
                 rval, frame = vc.read()
                 milliseconds = vc.get(cv2.CAP_PROP_POS_MSEC)
                 seconds = milliseconds // 1000
@@ -68,8 +66,8 @@ if video_to_frame:
                 #print(int(hours), int(minutes), int(seconds), int(milliseconds))
 
                 if rval:  # for the last item
-                    if (c % gap == 0):  # 每隔timeF帧进行存储操作
-                        cv2.imwrite(outputFile + str(name).zfill(7) + '.jpg', frame)  # 存储为图像 + filename.strip('/RGB.avi') + '_'
+                    if (c % gap == 0):
+                        cv2.imwrite(outputFile + str(name).zfill(10) + '.jpg', frame)
                         name += 1
                     cv2.waitKey(1)
                 else:
