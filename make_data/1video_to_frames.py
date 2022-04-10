@@ -11,7 +11,7 @@ import numpy as np
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--videoFile', default='~/videos/', type=str, help = 'Downloaded videos folder')
+parser.add_argument('--videoFile', default='/user/home/qy18694/videos/', type=str, help = 'Downloaded videos folder')
 args = parser.parse_args()
 
 time_gap = 0.2
